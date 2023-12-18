@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.kazan.express.testtask.calculations.interfaces.CalcMaker;
+import ru.kazan.express.testtask.exceptions.SequenceSizeException;
 import ru.kazan.express.testtask.zip.interfaces.FileCreator;
 
 import java.io.*;
@@ -29,7 +30,7 @@ public class Zipper
     @Autowired
     private FileCreator fileCreator;
 
-    public void packFileToZip() throws Exception {
+    public void packFileToZip() throws SequenceSizeException {
         String content = calcMaker.getAbsValue().toString();
         // параметры создания архива так же можно вынести в отдельные проперти
         packFiles(content,
